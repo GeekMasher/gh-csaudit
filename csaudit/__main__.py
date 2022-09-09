@@ -10,7 +10,7 @@ try:
     import requests
 except ImportError:
     print(
-        "Missing 3rd party modules. Please run 'pip3 install requsts tabulate' to install them."
+        "Missing 3rd party modules. Please run 'pip3 install requests tabulate' to install them."
     )
     exit(1)
 
