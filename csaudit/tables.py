@@ -41,6 +41,7 @@ def createTable(sarif_path: str, analysis: dict):
 
                 table_rules.append(
                     [
+                        tool_name,
                         rule.get("name", rule.get("id", "N/A")),
                         rule.get("shortDescription", {}).get("text", "N/A"),
                         rule.get("defaultConfiguration", {}).get("level", "N/A"),
@@ -49,7 +50,7 @@ def createTable(sarif_path: str, analysis: dict):
 
     tools = tabulate(table_tools, headers=["Tool", "Version", "Datetime"])
     rules = tabulate(
-        table_rules, headers=["Rule Name / ID", "Rule Description", "Rule Priority"]
+        table_rules, headers=["Tool", "Rule Name / ID", "Rule Description", "Rule Priority"]
     )
 
     return tools, rules

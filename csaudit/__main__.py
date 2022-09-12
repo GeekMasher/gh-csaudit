@@ -24,6 +24,7 @@ logger = logging.getLogger("CSAudit")
 parser = argparse.ArgumentParser("CSAudit", description="Code Scanning Audit Tool")
 parser.add_argument("--debug", action="store_true", help="Enable Debugging")
 parser.add_argument("-o", "--output", default="./sarifs", help="Output Directory")
+parser.add_argument("-t", "--tool", help="Tool name", default="codeql")
 
 group_github = parser.add_argument_group("GitHub")
 group_github.add_argument("-r", "--repository", help="Repository full name (org/repo)")
@@ -34,7 +35,6 @@ group_github.add_argument(
     help="GitHub Instance (default: api.github.com)",
 )
 group_github.add_argument(
-    "-t",
     "--token",
     default=os.environ.get("GITHUB_TOKEN"),
     help="GitHub PAT (default: $GITHUB_TOKEN)",
@@ -112,6 +112,7 @@ if __name__ == "__main__":
             ref,
             sarif_path,
             token=arguments.token,
+            tool=arguments.tool,
             instance=arguments.instance,
         )
 

@@ -29,6 +29,7 @@ def getCodeScanningSARIF(
     ref: str,
     output: str,
     token: str,
+    tool: str = "codeql",
     instance: str = "api.github.com",
 ):
     # https://docs.github.com/en/enterprise-cloud@latest/rest/code-scanning#list-code-scanning-analyses-for-a-repository
@@ -39,7 +40,7 @@ def getCodeScanningSARIF(
             "Authorization": f"token {token}",
             "Accept": "application/vnd.github.v3+json",
         },
-        params={"ref": ref, "tool_name": "CodeQL"},
+        params={"ref": ref, "tool_name": tool},
     )
     data = r.json()
 
